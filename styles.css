@@ -1,18 +1,18 @@
 :root {
-  --bg-1: #c9de4d;
-  --bg-2: #67cb73;
-  --bg-3: #5b7df7;
+  --bg-1: #0f2027;
+  --bg-2: #203a43;
+  --bg-3: #2c5364;
   --glass: rgba(255, 255, 255, 0.16);
   --glass-border: rgba(255, 255, 255, 0.22);
   --panel: rgba(255, 255, 255, 0.14);
   --panel-strong: rgba(255, 255, 255, 0.18);
-  --text: #f7fffb;
-  --text-dark: #13311a;
-  --text-muted: rgba(247, 255, 251, 0.78);
-  --shadow: 0 20px 45px rgba(21, 60, 51, 0.22);
-  --yellow: #ffc72f;
-  --yellow-dark: #f1b402;
-  --green-dark: #2e6b4c;
+  --text: #ffffff;
+  --text-dark: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.78);
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  --yellow: #4facfe;
+  --yellow-dark: #00c6ff;
+  --green-dark: #1b3c52;
   --danger: #ff6767;
   --success: #57d88d;
   --white-soft: rgba(255, 255, 255, 0.92);
@@ -36,8 +36,8 @@ body {
   font-family: 'Nunito', sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 15% 80%, rgba(255, 194, 95, 0.45), transparent 30%),
-    radial-gradient(circle at 85% 18%, rgba(151, 231, 168, 0.35), transparent 26%),
+    radial-gradient(circle at 15% 80%, rgba(0, 153, 255, 0.45), transparent 30%),
+    radial-gradient(circle at 85% 18%, rgba(0, 204, 255, 0.35), transparent 26%),
     linear-gradient(125deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
   position: relative;
 }
@@ -72,7 +72,7 @@ textarea::placeholder {
 }
 
 select option {
-  color: #17351f;
+  color: #0f2027;
 }
 
 textarea {
@@ -97,13 +97,13 @@ textarea {
 .background-blur-left {
   left: 0;
   bottom: 5%;
-  background: rgba(255, 209, 117, 0.9);
+  background: rgba(0, 153, 255, 0.9);
 }
 
 .background-blur-right {
   right: 4%;
   bottom: 8%;
-  background: rgba(105, 124, 255, 0.92);
+  background: rgba(0, 204, 255, 0.92);
 }
 
 .app-shell {
@@ -119,7 +119,7 @@ textarea {
 
 .login-card {
   width: min(100%, 400px);
-  background: linear-gradient(180deg, rgba(172, 221, 100, 0.42), rgba(113, 190, 214, 0.32));
+  background: linear-gradient(180deg, rgba(79, 172, 254, 0.42), rgba(0, 198, 255, 0.32));
   border: 1px solid var(--glass-border);
   border-radius: 28px;
   padding: 34px 36px 28px;
@@ -135,9 +135,9 @@ textarea {
   display: grid;
   place-items: center;
   background: var(--yellow);
-  color: #233326;
+  color: #ffffff;
   font-size: 42px;
-  box-shadow: 0 12px 24px rgba(255, 199, 47, 0.35);
+  box-shadow: 0 12px 24px rgba(0, 153, 255, 0.35);
 }
 
 .brand-block {
@@ -226,9 +226,9 @@ textarea {
 }
 
 .primary-button {
-  background: linear-gradient(180deg, #ffd248 0%, #ffbc10 100%);
-  color: #1f2b16;
-  box-shadow: 0 12px 24px rgba(255, 193, 39, 0.28);
+  background: linear-gradient(180deg, #4facfe 0%, #00c6ff 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 153, 255, 0.28);
 }
 
 .ghost-button {
@@ -342,7 +342,7 @@ textarea {
 }
 
 .menu-card-active {
-  background: linear-gradient(180deg, rgba(255, 214, 90, 0.24), rgba(255, 255, 255, 0.12));
+  background: linear-gradient(180deg, rgba(79, 172, 254, 0.24), rgba(255, 255, 255, 0.12));
 }
 
 .menu-card-disabled {
