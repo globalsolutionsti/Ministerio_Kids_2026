@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ministerio Kids | Sistema de Registro</title>
+    <meta
+      name="description"
+      content="Sistema de registro para el ministerio Kids: base de datos de niños y responsables autorizados."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./config.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="background-blur background-blur-left"></div>
+    <div class="background-blur background-blur-right"></div>
+
+    <main class="app-shell">
+      <section class="login-screen" id="loginScreen">
+        <div class="login-card">
+          <div class="login-icon">✝</div>
+          <div class="brand-block">
+            <h1 class="brand-title">Ministerio <span>Kids</span></h1>
+            <p class="brand-subtitle">SISTEMA DE REGISTRO</p>
+          </div>
+
+          <form id="loginForm" class="login-form">
+            <label class="field">
+              <span>USUARIO</span>
+              <div class="field-box">
+                <span class="field-icon">👤</span>
+                <input id="loginUsername" type="text" autocomplete="username" value="admin" required>
+              </div>
+            </label>
+
+            <label class="field">
+              <span>CONTRASEÑA</span>
+              <div class="field-box">
+                <span class="field-icon">🔐</span>
+                <input
+                  id="loginPassword"
+                  type="password"
+                  autocomplete="current-password"
+                  value="admin123"
+                  required
+                >
+              </div>
+            </label>
+
+            <button class="primary-button login-button" type="submit">
+              Entrar al Sistema
+              <span>→</span>
+            </button>
+          </form>
+
+          <p class="login-demo">
+            Demo inicial: usuario <strong>admin</strong> / pass <strong>admin123</strong>
+          </p>
+          <div class="system-message" id="loginMessage"></div>
+        </div>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Ministerio Kids</p>
+            <h2>Control de Base de Datos</h2>
+          </div>
+          <div class="topbar-actions">
+            <div class="status-chip" id="sessionUser">Administrador</div>
+            <button type="button" class="ghost-button" id="logoutButton">Cerrar sesión</button>
+          </div>
+        </header>
+
+        <section class="menu-section">
+          <article class="menu-card menu-card-active">
+            <div class="menu-card-icon">🗂️</div>
+            <div>
+              <h3>Base de Datos</h3>
+              <p>Registrar, editar y eliminar niños y responsables autorizados.</p>
+            </div>
+          </article>
+
+          <article class="menu-card menu-card-disabled">
+            <div class="menu-card-icon">✅</div>
+            <div>
+              <h3>Entradas</h3>
+              <p>Se deja preparado para la siguiente fase.</p>
+            </div>
+          </article>
+
+          <article class="menu-card menu-card-disabled">
+            <div class="menu-card-icon">🚪</div>
+            <div>
+              <h3>Salidas</h3>
+              <p>Se deja preparado para la siguiente fase.</p>
+            </div>
+          </article>
+
+          <article class="menu-card menu-card-disabled">
+            <div class="menu-card-icon">📊</div>
+            <div>
+              <h3>Reportes</h3>
+              <p>Se deja preparado para la siguiente fase.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="workspace">
+          <div class="workspace-header">
+            <div>
+              <p class="eyebrow">Primer módulo</p>
+              <h3>Base de datos de niños y responsables</h3>
+            </div>
+            <div class="workspace-actions">
+              <input
+                type="search"
+                id="searchInput"
+                class="search-input"
+                placeholder="Buscar por nombre del niño, grupo o responsable"
+              >
+              <button type="button" class="ghost-button" id="refreshButton">Actualizar</button>
+              <button type="button" class="primary-button" id="newRecordButton">Nuevo registro</button>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <section class="records-panel">
+              <div class="panel-header">
+                <h4>Registros</h4>
+                <span class="panel-counter" id="recordCounter">0</span>
+              </div>
+              <div class="records-list" id="recordsList"></div>
+            </section>
+
+            <section class="form-panel">
+              <div class="panel-header">
+                <div>
+                  <h4 id="formTitle">Nuevo registro</h4>
+                  <p class="panel-text">Captura los datos del niño y de sus responsables autorizados.</p>
+                </div>
+              </div>
+
+              <form id="kidForm" class="data-form">
+                <div class="section-block">
+                  <div class="section-head">
+                    <h5>Datos del niño</h5>
+                    <p>Los campos marcados con * son obligatorios.</p>
+                  </div>
+
+                  <div class="form-grid">
+                    <label class="inline-field inline-field-wide">
+                      <span>Nombre completo *</span>
+                      <input type="text" id="kidFullName" required>
+                    </label>
+
+                    <label class="inline-field">
+                      <span>Grupo *</span>
+                      <input type="text" id="kidGroupName" placeholder="Ej. Corderitos" required>
+                    </label>
+
+                    <label class="inline-field">
+                      <span>Fecha de nacimiento</span>
+                      <input type="date" id="kidBirthDate">
+                    </label>
+
+                    <label class="inline-field">
+                      <span>Género</span>
+                      <select id="kidGender">
+                        <option value="">Seleccionar</option>
+                        <option value="Niño">Niño</option>
+                        <option value="Niña">Niña</option>
+                      </select>
+                    </label>
+
+                    <label class="inline-field inline-field-wide">
+                      <span>Alergias / alertas médicas</span>
+                      <input type="text" id="kidAllergies" placeholder="Ej. Alergia al cacahuate">
+                    </label>
+
+                    <label class="inline-field inline-field-wide">
+                      <span>Notas adicionales</span>
+                      <textarea id="kidNotes" rows="3"></textarea>
+                    </label>
+                  </div>
+
+                  <div class="photo-card">
+                    <div>
+                      <h6>Foto del niño</h6>
+                      <p>Desde celular puedes abrir la cámara y tomar la foto en el momento.</p>
+                    </div>
+                    <div class="photo-actions">
+                      <input
+                        type="file"
+                        id="kidPhotoInput"
+                        accept="image/*"
+                        capture="environment"
+                      >
+                      <button type="button" class="ghost-button" id="removeKidPhotoButton">Quitar foto</button>
+                    </div>
+                    <div class="photo-preview-wrapper">
+                      <img id="kidPhotoPreview" class="photo-preview hidden" alt="Vista previa del niño">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-block">
+                  <div class="section-head section-head-row">
+                    <div>
+                      <h5>Responsables autorizados</h5>
+                      <p>Puedes registrar uno o varios adultos autorizados para recoger al niño.</p>
+                    </div>
+                    <button type="button" class="ghost-button" id="addGuardianButton">Agregar responsable</button>
+                  </div>
+
+                  <div id="guardiansContainer" class="guardians-stack"></div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="ghost-button" id="resetFormButton">Limpiar</button>
+                  <button type="submit" class="primary-button" id="saveButton">Guardar registro</button>
+                </div>
+              </form>
+
+              <div class="system-message" id="formMessage"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
